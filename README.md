@@ -1,4 +1,4 @@
 # brutTOnetto
-Aplikacja do przeliczania wynagrodzenia brutto na netto
-Kod & UI: B.S
+Aplikacja do przeliczania wynagrodzenia brutto na netto <br>
+Kod & UI: B.S <br>
 Wsparcie merytoryczna: I.M
