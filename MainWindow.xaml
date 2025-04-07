@@ -1,0 +1,36 @@
+﻿<Window x:Class="brutTOnetto.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:brutTOnetto"
+        mc:Ignorable="d"
+        Title="brutTOnetto" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center">
+            <Label Content="Wynagrodzenie brutto" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Center" x:Name="brutto" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="0,20,0,0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+            <Label Content="PIT (x%): " x:Name="pit"  HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top"/>
+            <Label Content="Emerytalne (9,76%): " x:Name="em" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Rentowe (1,5%): " x:Name="rent" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Chorobowe (2,45%): " x:Name="cho" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Zdrowotne (9%): " x:Name="zdr" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="2">
+            <Button Content="Policz wynagrodzenie netto" x:Name="calc_button" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Click="calc"/>
+        </StackPanel>
+        <Label Grid.Column="1" Content=""  x:Name="netto"  HorizontalAlignment="Center" Margin="0,64,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
