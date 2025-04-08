@@ -22,15 +22,30 @@
             <TextBox HorizontalAlignment="Center" x:Name="brutto" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="0,20,0,0"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="1">
-            <Label Content="PIT (x%): " x:Name="pit"  HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top"/>
+            <Label Content="PIT (12%): " x:Name="pit"  HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top"/>
             <Label Content="Emerytalne (9,76%): " x:Name="em" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
             <Label Content="Rentowe (1,5%): " x:Name="rent" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
             <Label Content="Chorobowe (2,45%): " x:Name="cho" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
             <Label Content="Zdrowotne (9%): " x:Name="zdr" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
         </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Label Content="Koszt uzyskania przychodu" HorizontalAlignment="Left" Margin="0,40,10,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Center" x:Name="kup" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Margin="0,45,10,0"/>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="2">
             <Button Content="Policz wynagrodzenie netto" x:Name="calc_button" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Click="calc"/>
         </StackPanel>
-        <Label Grid.Column="1" Content=""  x:Name="netto"  HorizontalAlignment="Center" Margin="0,64,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Grid.Column="2" Content=""  x:Name="netto"  HorizontalAlignment="Center" Margin="0,64,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="" x:Name="help"  Cursor="Help" Grid.Column="2" Grid.Row="2" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" MouseEnter="show" MouseLeave="unshow"/>
+        <Popup x:Name="popup" PlacementTarget="{Binding ElementName=help}" Placement="Right" StaysOpen="True">
+            <Border Background="LightYellow" BorderBrush="Black" BorderThickness="1" Padding="5">
+                <StackPanel>
+                    <TextBlock Text="Od kwoty brutto odejmujemy: składkę emerytalną, rentową i chorobową."/>
+                    <TextBlock Text="Od uzyskanej kwoty obliczamy składkę zdrowotną."/>
+                    <TextBlock Text="Od początkowej kwoty brutto odejmujemy wszystkie składki (bez zdrowotnej), KUP, obliczamy podatek i odejmujemy ulgę - tak wychodzi nam zaliczka."/>
+                    <TextBlock Text="Na koniec po odjęciu składek (w tym zdrowotnej) i zaliczki, otrzymujemy kwotę netto."/>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Window>

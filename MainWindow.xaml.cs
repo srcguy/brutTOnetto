@@ -27,35 +27,38 @@ namespace brutTOnetto
             {
                 double brutto_int = double.Parse(brutto.Text);
 
-                double em_int = Math.Round(brutto_int * 0.0976); //emerytura
+                double em_int = Math.Round(brutto_int * 0.0976, 2); //emerytura
                 em.Content = "Emerytalne (9,76%): " + em_int;
-                double rent_int = Math.Round(brutto_int * 0.015); //renta
+                double rent_int = Math.Round(brutto_int * 0.015, 2); //renta
                 rent.Content = "Rentowe (1,5%): " + rent_int;
-                double chor_int = Math.Round(brutto_int * 0.0245); //chorobowe
+                double chor_int = Math.Round(brutto_int * 0.0245, 2); //chorobowe
                 cho.Content = "Chorobowe (2,45%): " + chor_int;
-                double zdr_int = Math.Round(brutto_int * 0.09); //zdrowotne
+                double zdr_int = Math.Round((brutto_int - em_int - rent_int - chor_int) * 0.09, 2); //zdrowotne
                 zdr.Content = "Zdrowotne (9%): " + zdr_int;
-                brutto_int = brutto_int - em_int - rent_int - chor_int - zdr_int;
-                if (brutto_int < 2500)
-                {
-                    brutto_int = brutto_int;
-                    double pit_int = Math.Round(brutto_int * 0);
-                    pit.Content = "PIT (0%): " + pit_int;
-                }
-                else if (brutto_int > 2500 && brutto_int < 10000)
-                {
-                    double pit_int = Math.Round(brutto_int * 0.12);
-                    brutto_int = brutto_int - pit_int;
-                    pit.Content = "PIT (12%): " + pit_int;
-                }
-                else if (brutto_int > 10000)
-                {
-                    double pit_int = Math.Round(brutto_int * 0.32);
-                    brutto_int = brutto_int - pit_int;
-                    pit.Content = "PIT (32%): " + pit_int;
-                }
+
+                brutto_int = brutto_int - em_int - rent_int - chor_int; //do opodatkowania
+
+                double kup_int = Math.Round(double.Parse(kup.Text), 2);
+
+                double pit_int = Math.Round(Math.Round((brutto_int - kup_int) * 0.12) - 300.00, 2);
+                brutto_int = brutto_int - pit_int;
+
+                pit.Content = "PIT (12%): " + pit_int;
+                brutto_int = Math.Round(brutto_int - zdr_int, 2);
                 netto.Content = "Wynagrodzenie netto: " + brutto_int;
+                help.Content = "?";
             }
         }
+
+        private void show(object sender, MouseEventArgs e)
+        {
+            popup.IsOpen = true;
+        }
+
+        private void unshow(object sender, MouseEventArgs e)
+        {
+            popup.IsOpen = false;
+        }
+
     }
 }
