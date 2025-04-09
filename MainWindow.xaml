@@ -29,8 +29,11 @@
             <Label Content="Zdrowotne (9%): " x:Name="zdr" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-            <Label Content="Koszt uzyskania przychodu" HorizontalAlignment="Left" Margin="0,40,10,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Center" x:Name="kup" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Margin="0,45,10,0"/>
+            <Label Content="Koszt uzyskania przychodu" HorizontalAlignment="Left" Margin="0,30,10,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Center" x:Name="kup" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Margin="0,35,10,0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <CheckBox Content="Ulga dla młodych" x:Name="ml_ulg" Margin="0,75,10,0" VerticalAlignment="Top" HorizontalAlignment="Center" IsChecked="False"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="2">
             <Button Content="Policz wynagrodzenie netto" x:Name="calc_button" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Click="calc"/>
@@ -40,7 +43,7 @@
         <Popup x:Name="popup" PlacementTarget="{Binding ElementName=help}" Placement="Right" StaysOpen="True">
             <Border Background="LightYellow" BorderBrush="Black" BorderThickness="1" Padding="5">
                 <StackPanel>
-                    <TextBlock Text="Od kwoty brutto odejmujemy: składkę emerytalną, rentową i chorobową."/>
+                    <TextBlock Text="Od kwoty brunno odejmujemy: składkę emerytalną, rentową i chorobową."/>
                     <TextBlock Text="Od uzyskanej kwoty obliczamy składkę zdrowotną."/>
                     <TextBlock Text="Od początkowej kwoty brutto odejmujemy wszystkie składki (bez zdrowotnej), KUP, obliczamy podatek i odejmujemy ulgę - tak wychodzi nam zaliczka."/>
                     <TextBlock Text="Na koniec po odjęciu składek (w tym zdrowotnej) i zaliczki, otrzymujemy kwotę netto."/>
