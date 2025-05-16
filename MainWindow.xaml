@@ -23,10 +23,10 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="1">
             <Label Content="PIT (12%): " x:Name="pit"  HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top"/>
-            <Label Content="Emerytalne (9,76%): " x:Name="em" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Rentowe (1,5%): " x:Name="rent" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Chorobowe (2,45%): " x:Name="cho" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Zdrowotne (9%): " x:Name="zdr" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Emerytalna (9,76%): " x:Name="em" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Rentowa (1,5%): " x:Name="rent" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Chorobowa (2,45%): " x:Name="cho" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Zdrowotna (9%): " x:Name="zdr" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <Label Content="Koszt uzyskania przychodu" HorizontalAlignment="Left" Margin="0,30,10,0" VerticalAlignment="Top"/>
@@ -37,6 +37,9 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Row="2">
             <Button Content="Policz wynagrodzenie netto" x:Name="calc_button" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Click="calc"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1">
+            <Button Content="Otwórz zaawansowany arkusz roczny" x:Name="sheet" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Click="sheet_open"/>
         </StackPanel>
         <Label Grid.Column="2" Content=""  x:Name="netto"  HorizontalAlignment="Center" Margin="0,64,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <Label Content="" x:Name="help"  Cursor="Help" Grid.Column="2" Grid.Row="2" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" MouseEnter="show" MouseLeave="unshow"/>
@@ -50,5 +53,10 @@
                 </StackPanel>
             </Border>
         </Popup>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Margin="0,20,0,0">
+            <Label Content="brutTOnetto" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" FontFamily="Arial Black"/>
+            <Label Content="(Brunetto)" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Bruno Szewczyk i Igor Mazur" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" FontFamily="Arial Black"/>
+        </StackPanel>
     </Grid>
 </Window>

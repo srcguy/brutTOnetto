@@ -21,6 +21,13 @@ namespace brutTOnetto
             InitializeComponent();
         }
 
+        private void sheet_open(object sender, RoutedEventArgs e)
+        {
+            Sheet newWindow = new Sheet();
+
+            newWindow.Show();
+        }
+
         private void calc(object sender, RoutedEventArgs e)
         {
             if (brutto.Text != null)
@@ -37,7 +44,7 @@ namespace brutTOnetto
                     double chor_int = Math.Round(brutto_int * 0.0245, 2); //chorobowe
                     cho.Content = "Chorobowe (2,45%): " + chor_int;
                     double zdr_int = Math.Round((brutto_int - em_int - rent_int - chor_int) * 0.09, 2); //zdrowotne
-                    zdr.Content = "Zdrowotne (9%): " + zdr_int;
+                    zdr.Content = "Zdrowotna (9%): " + zdr_int;
 
                     brutto_int = brutto_int - em_int - rent_int - chor_int; //do opodatkowania
 

@@ -1,0 +1,82 @@
+﻿<Window x:Class="brutTOnetto.Sheet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:brutTOnetto"
+        mc:Ignorable="d"
+        Title="Zaawansowany arkusz roczny (ZAR)" Height="450" Width="800">
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="Miesiąc" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" FontWeight="Bold"/>
+        <Label Content="Brutto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" FontWeight="Bold"/>
+        <Label Content="PIT" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" FontWeight="Bold"/>
+        <Label Content="S. Emerytalna" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0" FontWeight="Bold" FontSize="10"/>
+        <Label Content="S. Rentowa" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Grid.Row="0" FontWeight="Bold"/>
+        <Label Content="S. Chorobowa" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5" Grid.Row="0" FontWeight="Bold" FontSize="10"/>
+        <Label Content="S. Zdrowotna" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="6" Grid.Row="0" FontWeight="Bold" FontSize="10"/>
+        <Label Content="KUP" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="7" Grid.Row="0" FontWeight="Bold"/>
+        <Label Content="P. narastająco" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="8" Grid.Row="0" FontWeight="Bold" FontSize="10"/>
+        <Label Content="Netto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="9" Grid.Row="0" FontWeight="Bold"/>
+
+        <Label Content="Styczeń" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" FontWeight="Bold"/>
+        <Label Content="Luty" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" FontWeight="Bold"/>
+        <Label Content="Marzec" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" FontWeight="Bold"/>
+        <Label Content="Kwiecień" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4" FontWeight="Bold"/>
+        <Label Content="Maj" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="5" FontWeight="Bold"/>
+        <Label Content="Czerwiec" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="6" FontWeight="Bold"/>
+        <Label Content="Lipiec" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="7" FontWeight="Bold"/>
+        <Label Content="Sierpień" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="8" FontWeight="Bold"/>
+        <Label Content="Wrzesień" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="9" FontWeight="Bold"/>
+        <Label Content="Październik" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="10" FontWeight="Bold"/>
+        <Label Content="Listopad" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="11" FontWeight="Bold"/>
+        <Label Content="Grudzień" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="12" FontWeight="Bold"/>
+
+        <StackPanel HorizontalAlignment="Center" Grid.Row="13" Grid.Column="0" Orientation="Horizontal">
+            <Label Content="KUP" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="10"/>
+            <TextBox HorizontalAlignment="Center" x:Name="kup" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="50" Margin="0,0,0,0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="14" Grid.Column="0">
+            <CheckBox Content="UDM" x:Name="ml_ulg" Margin="0,6,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="False" MouseEnter="UDM_info" MouseLeave="UDM_info_hide"/>
+        </StackPanel>
+        <Popup x:Name="UDM_popup" PlacementTarget="{Binding ElementName=ml_ulg}" Placement="Right" StaysOpen="True">
+            <Border Background="LightYellow" BorderBrush="Black" BorderThickness="1" Padding="5">
+                <StackPanel>
+                    <TextBlock Text="Ulga dla osób do 26. roku życia."/>
+                    <TextBlock Text="0% PIT"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Button Content="Policz" HorizontalAlignment="Center" Grid.Row="15" VerticalAlignment="Center" Width="40" x:Name="policz" />
+
+    </Grid>
+</Window>
