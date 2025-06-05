@@ -48,6 +48,10 @@ namespace brutTOnetto
 
                     brutto_int = brutto_int - em_int - rent_int - chor_int; //do opodatkowania
 
+                    if (kup.Text == "")
+                    {
+                        kup.Text = "250";
+                    }
                     double kup_int = Math.Round(double.Parse(kup.Text), 2);
 
                     if (ml_ulg.IsChecked == false)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,38 +34,38 @@ namespace brutTOnetto
             {
                 TextBox tb = new TextBox { Name = "input" + i, Text = "0" };
                 Grid.SetRow(tb, i);
-                Grid.SetColumn(tb, 1);
+                Grid.SetColumn(tb, 2);
                 Label pit = new Label { Content = "0" , Name = "pit" + i};
                 Grid.SetRow(pit, i);
-                Grid.SetColumn(pit, 2);
+                Grid.SetColumn(pit, 3);
                 Label eme = new Label { Content = "0", Name = "eme" + i };
                 Grid.SetRow(eme, i);
-                Grid.SetColumn(eme, 3);
+                Grid.SetColumn(eme, 4);
                 Label ren = new Label { Content = "0", Name = "ren" + i };
                 Grid.SetRow(ren, i);
-                Grid.SetColumn(ren, 4);
+                Grid.SetColumn(ren, 5);
                 Label cho = new Label { Content = "0", Name = "cho" + i };
                 Grid.SetRow(cho, i);
-                Grid.SetColumn(cho, 5);
+                Grid.SetColumn(cho, 6);
                 Label zdr = new Label { Content = "0", Name = "zdr" + i };
                 Grid.SetRow(zdr, i);
-                Grid.SetColumn(zdr, 6);
-                Label kup = new Label { Content = "0", Name = "kup" + i };
-                Grid.SetRow(kup, i);
-                Grid.SetColumn(kup, 7);
+                Grid.SetColumn(zdr, 7);
+                Label inn = new Label { Content = "0", Name = "inn" + i };
+                Grid.SetRow(inn, i);
+                Grid.SetColumn(inn, 8);
                 Label nar = new Label { Content = "0", Name = "nar" + i };
                 Grid.SetRow(nar, i);
-                Grid.SetColumn(nar, 8);
+                Grid.SetColumn(nar, 9);
                 Label netto = new Label { Content = "0", Name = "netto" + i };
                 Grid.SetRow(netto, i);
-                Grid.SetColumn(netto, 9);
+                Grid.SetColumn(netto, 10);
                 MainGrid.Children.Add(tb);
                 MainGrid.Children.Add(pit);
                 MainGrid.Children.Add(eme);
                 MainGrid.Children.Add(ren);
                 MainGrid.Children.Add(cho);
                 MainGrid.Children.Add(zdr);
-                MainGrid.Children.Add(kup);
+                MainGrid.Children.Add(inn);
                 MainGrid.Children.Add(nar);
                 MainGrid.Children.Add(netto);
                 inputBoxes.Add(tb);
@@ -72,7 +73,7 @@ namespace brutTOnetto
                 LabelList.Add(ren);
                 LabelList.Add(cho);
                 LabelList.Add(zdr);
-                LabelList.Add(kup);
+                LabelList.Add(inn);
                 LabelList.Add(pit);
                 LabelList.Add(netto);
                 LabelList.Add(nar);
@@ -88,7 +89,18 @@ namespace brutTOnetto
             {
                 if (decimal.TryParse(inputBoxes[i].Text, out decimal brutto_int))
                 {
-
+                    if (ppk_wnik.Text == "")
+                    {
+                        ppk_wnik.Text = "2";
+                    }
+                    decimal ppk_wnik_procent = decimal.Parse(ppk_wnik.Text) * 0.01m;
+                    decimal ppk_wnik_int = brutto_int * ppk_wnik_procent;
+                    if (ppk_dawca.Text == "")
+                    {
+                        ppk_dawca.Text = "1.5";
+                    }
+                    decimal ppk_dawca_procent = decimal.Parse(ppk_dawca.Text, CultureInfo.InvariantCulture) * 0.01m;
+                    decimal ppk_dawca_int = brutto_int * ppk_dawca_procent;
                     decimal procent = 0.0976m;
                     decimal em_int = Math.Round(Decimal.Multiply(brutto_int, procent), 2); //emerytura
                     LabelList[n].Content = em_int;
@@ -114,7 +126,7 @@ namespace brutTOnetto
                     }
                     else
                     {
-                        do_opodatkowania = brutto_int - kup_int;
+                        do_opodatkowania = brutto_int - kup_int + ppk_dawca_int;
                     }
 
                     decimal nowe_narastajace = narastajace + do_opodatkowania;
@@ -144,7 +156,6 @@ namespace brutTOnetto
                         decimal procent32 = 0.32m;
                         narastajace = narastajace + do_opodatkowania;
                         LabelList[n + 7].Content = narastajace;
-                        LabelList[n + 4].Content = kup_int;
                         decimal podatek = (kwota12 * procent12) + (kwota32 * procent32);
                         decimal pit_int = 0m;
                         if (podatek > 300m)
@@ -158,14 +169,16 @@ namespace brutTOnetto
                     else
                     {
                         procent = 0m;
-                        LabelList[n + 4].Content = 0;
+                        narastajace = narastajace + do_opodatkowania;
+                        LabelList[n + 7].Content = narastajace;
                         decimal pit_int = 0m;
                         brutto_int = brutto_int - pit_int;
 
                         LabelList[n + 5].Content = pit_int;
                     }
-                    brutto_int = Math.Round(brutto_int - zdr_int, 2);
+                    brutto_int = Math.Round(brutto_int - zdr_int - ppk_wnik_int, 2);
                     LabelList[n+6].Content = brutto_int;
+                    LabelList[n + 4].Content = ppk_wnik_int;
                     n = n + 8;
                 }
             }
